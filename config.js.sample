@@ -1,0 +1,11 @@
+
+const config = {
+    sigfoxApiUser: "yourSigfoxApiUser",
+    sigfoxApiPassword: "yourSigfoxApiPassword",
+    sigfoxApiSite: "api.sigfox.com",
+    publicMapPath: "/v2/tiles/public-coverage",
+    https: true,
+    backgroundMap: "https://api.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token={yourToken}"
+};
+
+module.exports = config;

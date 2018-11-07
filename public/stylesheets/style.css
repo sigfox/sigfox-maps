@@ -1,0 +1,56 @@
+body {
+  padding: 50px;
+  font: 14px "Ubuntu", Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#mapid {
+  height: 700px;
+}
+
+ul {
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    max-width: 420px;
+    margin: 0 auto;
+    margin-bottom: 3.125em;
+    list-style: none;
+}
+
+li {
+    vertical-align: baseline;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+li::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+ul > :first-child::before {
+    background-color: #00e4ff;
+}
+
+ul > :last-child::before {
+    background-color: #7E0BFF;
+}
