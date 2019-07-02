@@ -16,6 +16,8 @@ const filtered = ["AND", "ARE", "ARG", "AUS", "AUT", "BEL", "BRA", "CAN", "CHE",
 const geoJsonParsed = JSON.parse(fs.readFileSync('assets/WorldCountries.geojson'));
 const countriesToDisplay = _.filter(geoJsonParsed.features, feature => _.find(filtered, e => e === feature.properties.ISO_A3) !== undefined);
 
+// from https://snazzymaps.com/style/151/ultra-light-with-labels
+const googleStyle = JSON.parse(fs.readFileSync('assets/google-light-style.json'));
 
 
 router.get('/', function(req, res, next) {
@@ -30,8 +32,14 @@ router.get('/', function(req, res, next) {
                 res.render('publicmap', {
                     title: 'Sigfox public map',
                     sigfoxMapUrl: mapUrl,
+                    countries: JSON.stringify(countriesToDisplay),
                     backgroundMap: config.backgroundMap,
-                    countries: JSON.stringify(countriesToDisplay)
+                    backgroundMapType: config.backgroundMapType,
+                    googleStyle: JSON.stringify(googleStyle),
+                    googleToken: config.googleToken,
+                    hereAppId: config.hereAppId,
+                    hereAppCode: config.hereAppCode,
+                    bingKey: config.bingKey
                 });
             }
         })

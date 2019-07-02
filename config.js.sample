@@ -5,7 +5,27 @@ const config = {
     sigfoxApiSite: "api.sigfox.com",
     publicMapPath: "/v2/tiles/public-coverage",
     https: true,
+    
+    //---- For MapBox background map
+    backgroundMapType: "Basic",
     backgroundMap: "https://api.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token={yourToken}"
+    
+    //---- For Jawg background map
+    //backgroundMapType: "Basic",
+    //backgroundMap: "http://tile.jawg.io/jawg-light/{z}/{x}/{y}.png?access-token={yourToken}"
+    
+    //---- For HERE background map
+    //backgroundMapType: "Here",
+    //hereAppId: "{yourAppId}",
+    //hereAppCode: "{yourAppCode}"
+    
+    //---- For Bing background map
+    //backgroundMapType: "Bing",
+    //bingKey: "{yourBingKey}"
+
+    //---- For Google background map
+    //backgroundMapType: "Google",
+    //googleToken: "{yourToken}"
 };
 
 module.exports = config;
