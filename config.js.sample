@@ -4,6 +4,7 @@ const config = {
     sigfoxApiPassword: "yourSigfoxApiPassword",
     sigfoxApiSite: "api.sigfox.com",
     publicMapPath: "/v2/tiles/public-coverage",
+    monarchMapPath: "/v2/tiles/monarch",
     https: true,
     
     //---- For MapBox background map

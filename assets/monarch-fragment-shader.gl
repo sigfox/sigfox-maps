@@ -1,0 +1,23 @@
+void main(void) {
+    // Classic texel look-up (fetch the texture "pixel" color for this fragment)
+    vec4 texelColour = texture2D(uTexture0, vec2(vTextureCoords.s, vTextureCoords.t));
+
+    // Let's mix the colours a little bit, each channel store a distinct value.
+    // red channel is for best margin (in dB)
+    // green channel is for second best margin (in dB)
+    // blue channel is for third best margin (in dB)
+    // alpha channel is for rssi (starting from -142 dBm)
+    // Values in dB and dBm are strech by a factor 3.
+    if (max(0.0, min(255.0 * texelColour.b / 3.0, maxOffset )) > 0.0) {
+        // Lagoon #00DFFF
+        gl_FragColor = vec4(0.1373, 0, 0.4, 1);
+    } else if (max(0.0, min(255.0 * texelColour.g / 3.0, maxOffset )) > 0.0) {
+        // Lavender #8024FF
+        gl_FragColor = vec4(0.5, 0.1412, 1, 1);
+    } else if (max(0.0, min(255.0 * texelColour.r / 3.0, maxOffset )) > 0.0) {
+        // Cosmos #230066
+        gl_FragColor = vec4(0, 0.8745, 1, 1);
+    } else {
+        gl_FragColor = vec4(0, 0, 0, 0);
+    }
+}

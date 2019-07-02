@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const publicMapRouter = require('./routes/publicmap');
+const monarchMapRouter = require('./routes/monarchmap');
 
 const app = express();
 
@@ -27,6 +28,8 @@ app.get('/', function(req, res) {
 app.get('', function(req, res) {
     res.redirect('/publicmap');
 });
+
+app.use('/monarchmap', monarchMapRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

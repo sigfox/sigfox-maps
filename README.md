@@ -1,6 +1,10 @@
 # Sigfox-maps
 
-This project is an example of how to use the Sigfox backend API to display your own maps.
+This project is an example of how to use the Sigfox backend API to display your own maps. 
+
+There are 2 layers demonstrated in this project:
+- `Public map`
+- `Monarch coverage map`
 
 ## Technologies
 
@@ -24,6 +28,7 @@ const config = {
     sigfoxApiPassword: "yourSigfoxApiPassword",
     sigfoxApiSite: "api.sigfox.com",
     publicMapPath: "/v2/tiles/public-coverage",
+    monarchMapPath: "/v2/tiles/monarch",
     https: true,
     
     //---- For MapBox background map
@@ -33,13 +38,15 @@ const config = {
 ```
 
 In production situation, you should only set your own credentials to access the Sigfox API and set your background map URL according to your map provider.
+
 The example above showcases a [Mapbox](https://www.mapbox.com/) map with a light style (you'll have to set your own token). To sum up, the `backgroundMap` property expects a TMS URL.
-You can use other background map providers by switching properties (Jawg, Here, Google or Bing).
+You can use other background map providers by switching properties ([Jawg](https://www.jawg.io), [Here](https://developer.here.com/), [Google](https://cloud.google.com/maps-platform) or [Bing](https://www.bingmapsportal.com)).
 
 In test situation, you might want to mock the Sigfox Backend. In order to do this, you can edit the other properties :
 
 - `sigfoxApiSite` to specify the base URL of your mock (including the http(s) prefix)
 - `publicMapPath` to specify the endpoint. To provide a compatible endpoint, check the documentation of the Sigfox API v2
+- `monarchMapPath` to specify the endpoint. To provide a compatible endpoint, check the documentation of the Sigfox API v2
 - `https` to specify if your mock is deployed on https context (set it to true), or http (set it to false)
 
 ## How to run

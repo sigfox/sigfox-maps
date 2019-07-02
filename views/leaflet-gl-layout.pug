@@ -22,27 +22,29 @@ html
                 link(rel='stylesheet', href='https://unpkg.com/leaflet@1.5.1/dist/leaflet.css', integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="")
                 script(src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js", integrity= "sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==", crossorigin="")
 
-    body
+        script(src='https://unpkg.com/leaflet.tilelayer.gl@latest/src/Leaflet.TileLayer.GL')
+
+    body        
         ul.menu
-            li.active 
-                a(href="publicmap") Sigfox public map
             li 
+                a(href="publicmap") Sigfox public map
+            li.active 
                 a(href="monarchmap") Sigfox Monarch coverage map
-        ul.caption
-            li.first Live coverage
-            li.second Country under roll-out
+        ul.caption.monarch
+            li.first 1 Base station
+            li.second 2 Base stations
+            li.third 3 Base stations and +
         block content
 
         script.
             const sigfoxMapUrl = "#{sigfoxMapUrl}";
             const backgroundMapUrl = "#{backgroundMap}";
             const backgroundMapType = "#{backgroundMapType}";
-
-            const countries = !{countries} ;
-            const googleStyle = !{googleStyle} ;
-            const hereAppId = "!{hereAppId}" ;
-            const hereAppCode = "!{hereAppCode}" ;
-            const bingKey = "!{bingKey}" ;
+            const googleStyle = !{googleStyle};
+            const fragmentShader = `!{fragmentShader}`;
+            const hereAppId = "!{hereAppId}";
+            const hereAppCode = "!{hereAppCode}";
+            const bingKey = "!{bingKey}";
 
             const map = L.map('mapid', {
                 fullscreenControl: true,
@@ -83,13 +85,17 @@ html
                     maxZoom: 11
                 }).addTo(map);
             }
-            L.geoJSON(countries, style_countries).addTo(map);
-            L.tileLayer(sigfoxMapUrl,{
+            L.tileLayer.gl({
+                fragmentShader: fragmentShader,
+                tileUrls: [sigfoxMapUrl],
+                uniforms: {
+                    maxOffset: -70 - (-142)
+                },
                 zoomOffset: 0,
                 maxZoom: 11,
                 maxNativeZoom: 11,
                 zIndex: 500,
-                opacity: 0.7,
+                opacity: 0.8,
                 attribution: ' <a href="https://sigfox.com">sigfox</a>'
             }).addTo(map);
 
