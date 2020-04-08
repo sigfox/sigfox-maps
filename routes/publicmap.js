@@ -12,7 +12,7 @@ const tokenRetrieval = {
     auth: config.sigfoxApiUser + ":" + config.sigfoxApiPassword
 };
 
-const filtered = ["AND", "ARE", "ARG", "AUS", "AUT", "BEL", "BRA", "CAN", "CHE", "CHL", "COL", "CRI", "CZE", "DEU", "DNK", "ECU", "ESP", "EST", "FIN", "FRA", "GBR", "GTM", "HKG", "HND", "HRV", "HUN", "IRL", "IRN", "ITA", "JPN", "KEN", "KOR", "LIE", "LUX", "MEX", "MLT", "MUS", "MYS", "NCL", "NLD", "NOR", "NZL", "OMN", "PAN", "PER", "POL", "PRI", "PRT", "PYF", "ROU", "SGP", "SLV", "SVK", "SWE", "THA", "TUN", "TWN", "URY", "USA", "ZAF"];
+const filtered = ["AND", "ARE", "ARG", "AUS", "AUT", "BEL", "BGR", "BRA", "BWA", "CAN", "CIV", "CHE", "CHL", "COL", "CRI", "CZE", "DEU", "DNK", "ECU", "ESP", "EST", "FIN", "FRA", "GBR", "GRC", "GTM", "HKG", "HND", "HRV", "HUN", "IDN", "IRL", "ITA", "JPN", "KEN", "KOR", "LIE", "LTU", "LUX", "LVA", "MEX", "MLT", "MUS", "MYS", "NCL", "NGA", "NLD", "NOR", "NZL", "OMN", "PAN", "PER", "PNG", "POL", "PRI", "PRT", "PYF", "REU", "ROU", "RUS", "SAU", "SEN", "SGP", "SLV", "SRB", "SVK", "SWE", "SWZ", "THA", "TUN", "TWN", "URY", "USA", "ZAF"];
 const geoJsonParsed = JSON.parse(fs.readFileSync('assets/WorldCountries.geojson'));
 const countriesToDisplay = _.filter(geoJsonParsed.features, feature => _.find(filtered, e => e === feature.properties.ISO_A3) !== undefined);
 
