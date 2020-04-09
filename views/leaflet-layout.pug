@@ -21,6 +21,8 @@ html
             default
                 link(rel='stylesheet', href='https://unpkg.com/leaflet@1.5.1/dist/leaflet.css', integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="")
                 script(src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js", integrity= "sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==", crossorigin="")
+                script(src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js', crossorigin="")
+                link(rel='stylesheet', href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' crossorigin="")
 
     body
         ul.menu
@@ -44,11 +46,14 @@ html
             const hereAppCode = "!{hereAppCode}" ;
             const bingKey = "!{bingKey}" ;
 
-            const map = L.map('mapid', {
+            const map = L.map('mapid', {    
                 fullscreenControl: true,
-                zoomControl: true,
+                attributionControl: false,
+                zoomControl: false,
+                zoomSnap: 0.1,
+                zoomDelta: 0.1,
                 maxZoom: 11,
-                minZoom: 4,
+                minZoom: 0,
                 worldCopyJump: true
             }).setView([44, 0], 3);
 
